@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ -z "${1}" ]; then
+        if [ -r /var/lib/scepg/xmltv.xml ]; then
+                cat /var/lib/scepg/xmltv.xml
+        fi
+        exit 0
+fi
+
+case "${1}" in
+   --description) echo "StoneCold EPG";;
+   --version) echo "1.0" ;;
+   --capabilities) echo "baseline" ;;
+   *) echo "Unknown parameter (${1})" ;;
+esac
+
+exit 0

@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [ -z "${1}" -o ! -e "${1}" ]; then
+	echo "$(basename "${0}") [INPUT_VIDEO] [EXT]"
+	exit 1
+fi
+
+INPUT_VIDEO="${1}"
+OUTPUT_EXT="${2:-mp4}"
+OUTPUT_VIDEO=
+if [ "${INPUT_VIDEO}" != "${INPUT_VIDEO%.*}.${OUTPUT_EXT}" -a ! -e "${INPUT_VIDEO%.*}.${OUTPUT_EXT}" ]; then
+	OUTPUT_VIDEO="${INPUT_VIDEO%.*}.${OUTPUT_EXT}"
+else
+	for s in $(seq 1 100)
+	do
+		if [ ! -e "${INPUT_VIDEO%.*}-${s}.${OUTPUT_EXT}" ]; then
+			OUTPUT_VIDEO="${INPUT_VIDEO%.*}-${s}.${OUTPUT_EXT}"
+			break
+		fi
+	done
+fi
+
+ffmpeg -i "${INPUT_VIDEO}" -c copy "${OUTPUT_VIDEO}"
+
+exit $?

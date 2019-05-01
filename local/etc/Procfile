@@ -1,0 +1,2 @@
+socat: su-exec ${RUN_USER_NAME:-forumi0721} socat TCP-LISTEN:9983,reuseaddr,fork UNIX-CLIENT:/conf.d/tvheadend/epggrab/xmltv.sock
+tvheadend: tvheadend -p /run/tvheadend.pid -c /conf.d/tvheadend -C -u ${RUN_USER_NAME:-forumi0721} -g $(id -gn ${RUN_USER_NAME:-forumi0721})

@@ -1,0 +1,29 @@
+#!/bin/sh
+
+set -e
+
+if [ -e /.init ]; then
+	exit
+fi
+
+touch /.init
+
+mkdir -p /conf.d/tvheadend 
+
+RUN_USER_NAME=${RUN_USER_NAME:-forumi0721}
+RUN_USER_UID=${RUN_USER_UID:-1000}
+RUN_USER_GID=${RUN_USER_GID:-100}
+
+docker-adduser -u ${RUN_USER_UID} -g ${RUN_USER_GID} -H /dev/null -S /sbin/nologin ${RUN_USER_NAME}
+
+docker-chown ${RUN_USER_NAME} /conf.d/tvheadend
+
+if [ -e /dev/dvb/adapter0 ]; then
+	DVB_GID="$(ls -land /dev/dvb/adapter0/dvr0 | sed -e 's/^[^ ]\+[ ]\+[^ ]\+[ ]\+[^ ]\+[ ]\+\([^ ]\+\)[ ]\+.*$/\1/g')"
+	if [ -z "$(getent group ${DVB_GID})" ]; then
+		addgroup -g ${DVB_GID} -S ${RUN_USER_NAME}_dvb
+	fi
+	DVB_GROUP="$(getent group ${DVB_GID} | cut -d ':' -f 1)"
+	adduser ${RUN_USER_NAME} ${DVB_GROUP}
+fi
+
