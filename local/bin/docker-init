@@ -2,7 +2,7 @@
 
 set -e
 
-docker-install -r -u tvheadend tvheadend-dvb-scan ffmpeg socat wget
+docker-install -r -u goreman tvheadend tvheadend-dvb-scan ffmpeg socat wget
 
 rm -rf /build
 
