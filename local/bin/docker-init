@@ -2,7 +2,7 @@
 
 set -e
 
-docker-install -r -u -c goreman su-exec tvheadend tvheadend-dvb-scan ffmpeg soca 
+docker-install -r -u -c goreman su-exec tvheadend tvheadend-dvb-scan ffmpeg socat
 
 rm -rf /build
 
@@ -14,9 +14,5 @@ cd /
 
 rm -rf /build
 
-mkdir -p /conf.d
-mkdir -p /conf.d/tvheadend
-chown tvheadend:video /conf.d/tvheadend
-
-mkdir -p /data
+mkdir -p /conf.d /conf.d/tvheadend /data
 
