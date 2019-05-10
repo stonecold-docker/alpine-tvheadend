@@ -2,13 +2,13 @@
 
 set -e
 
-docker-install -r -u goreman tvheadend tvheadend-dvb-scan ffmpeg socat wget
+docker-install -r -u -c goreman su-exec tvheadend tvheadend-dvb-scan ffmpeg soca 
 
 rm -rf /build
 
 mkdir -p /build/scan
 cd /build/scan
-wget --no-check-certificate https://github.com/forumi0721/arch_stonecold_PKGBUILDs/raw/master/tvheadend-extra/tvheadend-extra.tar.xz -q -O - | tar Jx
+wget https://github.com/forumi0721/arch_stonecold_PKGBUILDs/raw/master/tvheadend-extra/tvheadend-extra.tar.xz -q -O - | tar Jx
 cp tvheadend-extra/usr/share/tvheadend/data/dvb-scan/atsc/* /usr/share/tvheadend/data/dvb-scan/atsc/
 cd /
 
@@ -19,6 +19,4 @@ mkdir -p /conf.d/tvheadend
 chown tvheadend:video /conf.d/tvheadend
 
 mkdir -p /data
-
-docker-install -d -c wget
 
