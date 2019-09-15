@@ -20,7 +20,7 @@ docker-chown ${RUN_USER_NAME} /conf.d/tvheadend
 
 if [ -e /dev/dvb/adapter0 ]; then
 	DVB_GID="$(ls -land /dev/dvb/adapter0/dvr0 | sed -e 's/^[^ ]\+[ ]\+[^ ]\+[ ]\+[^ ]\+[ ]\+\([^ ]\+\)[ ]\+.*$/\1/g')"
-	if [ -z "$(grep "^${DVB_GID}:" /etc/passwd)" ]; then
+	if [ -z "$(grep ":${DVB_GID}:" /etc/group)" ]; then
 		addgroup -g ${DVB_GID} -S ${RUN_USER_NAME}_dvb
 	fi
 	DVB_GROUP="$(grep "^[^:]*:[^:]*:${DVB_GID}:" /etc/group | cut -d ':' -f 1)"
