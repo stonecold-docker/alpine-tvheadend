@@ -2,18 +2,31 @@
 
 set -e
 
-docker-install -r -u -c goreman su-exec tvheadend ffmpeg socat
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Installing required packages"
+PKG_LIB="goreman su-exec tvheadend ffmpeg socat"
+PKG_DEV=""
+docker-install -r -u ${PKG_LIB} ${PKG_DEV}
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
+echo
 
-rm -rf /build
+#echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Installing dvb-scan"
+#mkdir -p /build/scan
+#cd /build/scan
+#wget https://github.com/forumi0721/arch_stonecold_PKGBUILDs/raw/master/tvheadend-extra/tvheadend-extra.tar.xz -q -O - | tar Jx
+#mkdir -p /usr/share/tvheadend/data/dvb-scan/atsc/
+#cp tvheadend-extra/usr/share/tvheadend/data/dvb-scan/atsc/* /usr/share/tvheadend/data/dvb-scan/atsc/
+#cd /
+#rm -rf /build
+#echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
+#echo
 
-mkdir -p /build/scan
-cd /build/scan
-wget https://github.com/forumi0721/arch_stonecold_PKGBUILDs/raw/master/tvheadend-extra/tvheadend-extra.tar.xz -q -O - | tar Jx
-mkdir -p /usr/share/tvheadend/data/dvb-scan/atsc/
-cp tvheadend-extra/usr/share/tvheadend/data/dvb-scan/atsc/* /usr/share/tvheadend/data/dvb-scan/atsc/
-cd /
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Uninstalling unnecessary packages"
+docker-install -d -c ${PKG_DEV}
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
+echo
 
-rm -rf /build
-
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Setting basic configurations"
 mkdir -p /conf.d /conf.d/tvheadend /data
+echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
+echo
 

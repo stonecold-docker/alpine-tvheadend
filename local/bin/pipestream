@@ -5,10 +5,8 @@ if [ -z "${1}" ]; then
 fi
 
 if [ "${2}" = "audio" ]; then
-	#ffmpeg -re -v error -fflags +genpts -i "${1}" -c copy -vn -f mpegts pipe:1
 	ffmpeg -v error -fflags +genpts -filter:a loudnorm -i "${1}" -c copy -vn -f mpegts pipe:1
 else
-	#ffmpeg -re -v error -fflags +genpts -i "${1}" -c copy -f mpegts pipe:1
 	ffmpeg -v error -fflags +genpts -filter:a loudnorm -i "${1}" -c copy -f mpegts pipe:1
 fi
 
