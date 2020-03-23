@@ -12,7 +12,7 @@ echo
 #echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Installing dvb-scan"
 #mkdir -p /build/scan
 #cd /build/scan
-#wget https://github.com/forumi0721/arch_stonecold_PKGBUILDs/raw/master/tvheadend-extra/tvheadend-extra.tar.xz -q -O - | tar Jx
+#wget --no-check-certificate -q -O - https://github.com/forumi0721/arch_stonecold_PKGBUILDs/raw/master/tvheadend-extra/tvheadend-extra.tar.xz | tar Jx
 #mkdir -p /usr/share/tvheadend/data/dvb-scan/atsc/
 #cp tvheadend-extra/usr/share/tvheadend/data/dvb-scan/atsc/* /usr/share/tvheadend/data/dvb-scan/atsc/
 #cd /
