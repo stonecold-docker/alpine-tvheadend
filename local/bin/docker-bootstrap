@@ -8,7 +8,7 @@ fi
 
 touch /.init
 
-mkdir -p /conf.d/tvheadend 
+mkdir -p /conf.d /conf.d/tvheadend /data
 
 RUN_USER_NAME=${RUN_USER_NAME:-forumi0721}
 RUN_USER_UID=${RUN_USER_UID:-1000}
