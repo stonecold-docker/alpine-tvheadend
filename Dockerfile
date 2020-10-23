@@ -1,6 +1,6 @@
-ARG BUILD_ARCH=aarch64
+ARG BUILD_ARCH=x64
 
-FROM forumi0721/alpine-aarch64-base:latest
+FROM forumi0721/alpine-x64-base:latest
 
 LABEL maintainer="forumi0721@gmail.com"
 
