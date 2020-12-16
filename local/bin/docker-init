@@ -4,13 +4,12 @@ set -e
 
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Installing required packages"
 PKG_LIB="goreman su-exec"
-#if [ "$(uname -m)" = "x86_64" ]; then
-#	PKG_LIB="${PKG_LIB} bsd-compat-headers bzip2 curl ffmpeg ffmpeg-libs gnu-libiconv gzip libcrypto1.1 libcurl libdvbcsa libhdhomerun-libs libssl1.1 libva libva-intel-driver mesa-dri-ati libvpx libxml2 libxslt linux-headers openssl opus pcre2 perl perl-archive-zip perl-boolean perl-capture-tiny perl-cgi perl-compress-raw-zlib perl-data-dumper perl-date-manip perl-datetime perl-datetime-format-strptime perl-datetime-timezone perl-dbd-sqlite perl-dbi perl-digest-sha1 perl-doc perl-file-slurp perl-file-temp perl-file-which perl-getopt-long perl-html-parser perl-html-tree perl-http-cookies perl-io perl-io-compress perl-io-html perl-io-socket-ssl perl-io-stringy perl-json perl-json-xs perl-libwww perl-lingua-en-numbers-ordinate perl-lingua-preferred perl-list-moreutils perl-lwp-useragent-determined perl-module-build perl-module-pluggable perl-net-ssleay perl-parse-recdescent perl-path-class perl-scalar-list-utils perl-term-progressbar perl-term-readkey perl-test-exception perl-test-requires perl-timedate perl-try-tiny perl-unicode-string perl-xml-libxml perl-xml-libxslt perl-xml-parser perl-xml-sax perl-xml-treepp perl-xml-twig perl-xml-writer py3-requests python2 tar uriparser wget x264 x265 zlib"
-#	PKG_LIB="${PKG_LIB} socat"
-#else
-#	PKG_LIB="${PKG_LIB} tvheadend ffmpeg socat"
-#fi
-PKG_LIB="${PKG_LIB} tvheadend ffmpeg socat"
+if [ "$(uname -m)" = "x86_64" ]; then
+	PKG_LIB="${PKG_LIB} gnu-libiconv ffmpeg liburiparser libdvbcsa"
+	PKG_LIB="${PKG_LIB} socat"
+else
+	PKG_LIB="${PKG_LIB} tvheadend ffmpeg socat"
+fi
 PKG_DEV=""
 docker-install -r -u ${PKG_LIB} ${PKG_DEV}
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
