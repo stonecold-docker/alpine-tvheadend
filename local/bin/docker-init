@@ -4,12 +4,14 @@ set -e
 
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Installing required packages"
 PKG_LIB="goreman su-exec"
-if [ "$(uname -m)" = "x86_64" ]; then
-	PKG_LIB="${PKG_LIB} gnu-libiconv ffmpeg liburiparser libdvbcsa"
-	PKG_LIB="${PKG_LIB} socat"
-else
-	PKG_LIB="${PKG_LIB} tvheadend ffmpeg socat"
-fi
+PKG_LIB="${PKG_LIB} gnu-libiconv ffmpeg liburiparser libdvbcsa"
+PKG_LIB="${PKG_LIB} socat"
+#if [ "$(uname -m)" = "x86_64" ]; then
+#	PKG_LIB="${PKG_LIB} gnu-libiconv ffmpeg liburiparser libdvbcsa"
+#	PKG_LIB="${PKG_LIB} socat"
+#else
+#	PKG_LIB="${PKG_LIB} tvheadend ffmpeg socat"
+#fi
 PKG_DEV=""
 docker-install -r -u ${PKG_LIB} ${PKG_DEV}
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"

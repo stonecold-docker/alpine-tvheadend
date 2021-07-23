@@ -1,23 +1,16 @@
 # alpine-tvheadend
+![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721/alpine-tvheadend)
+![Docker Stars](https://img.shields.io/docker/stars/forumi0721/alpine-tvheadend)
 
-#### [alpine-x64-tvheadend](https://hub.docker.com/r/forumi0721alpinex64/alpine-x64-tvheadend/)
-![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/forumi0721alpinex64/alpine-x64-tvheadend/latest)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721alpinex64/alpine-x64-tvheadend/latest)
-![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/forumi0721alpinex64/alpine-x64-tvheadend/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpinex64/alpine-x64-tvheadend)
-![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpinex64/alpine-x64-tvheadend)
-#### [alpine-aarch64-tvheadend](https://hub.docker.com/r/forumi0721alpineaarch64/alpine-aarch64-tvheadend/)
-![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/forumi0721alpineaarch64/alpine-aarch64-tvheadend/latest)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721alpineaarch64/alpine-aarch64-tvheadend/latest)
-![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/forumi0721alpineaarch64/alpine-aarch64-tvheadend/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpineaarch64/alpine-aarch64-tvheadend)
-![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpineaarch64/alpine-aarch64-tvheadend)
-#### [alpine-armhf-tvheadend](https://hub.docker.com/r/forumi0721alpinearmhf/alpine-armhf-tvheadend/)
-![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/forumi0721alpinearmhf/alpine-armhf-tvheadend/latest)
-![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721alpinearmhf/alpine-armhf-tvheadend/latest)
-![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/forumi0721alpinearmhf/alpine-armhf-tvheadend/latest)
-![Docker Pulls](https://img.shields.io/docker/pulls/forumi0721alpinearmhf/alpine-armhf-tvheadend)
-![Docker Stars](https://img.shields.io/docker/stars/forumi0721alpinearmhf/alpine-armhf-tvheadend)
+
+
+----------------------------------------
+### x64
+![Docker Image Version](https://img.shields.io/docker/v/forumi0721/alpine-tvheadend/latest)
+![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-tvheadend/latest)
+### aarch64
+![Docker Image Version](https://img.shields.io/docker/v/forumi0721/alpine-tvheadend/aarch64)
+![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-tvheadend/aarch64)
 
 
 
@@ -25,7 +18,7 @@
 #### Description
 
 * Distribution : [Alpine Linux](https://alpinelinux.org/)
-* Architecture : x64,aarch64,armhf
+* Architecture : x64,aarch64
 * Appplication : [Tvheadend](https://tvheadend.org/)
     - Tvheadend is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT\>IP and HDHomeRun as input sources. Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT\>IP streaming.
 
@@ -42,7 +35,7 @@ docker run -d \
            -p 9982:9982/tcp \
            -p 9983:9983/tcp \
            -v /conf.d:/conf.d \
-           forumi0721alpine[ARCH]/alpine-[ARCH]-tvheadend:latest
+           forumi0721/alpine-tvheadend:[ARCH_TAG]
 ```
 
 
