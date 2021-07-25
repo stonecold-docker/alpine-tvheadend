@@ -14,7 +14,9 @@ RUN ["docker-build"]
 
 
 
-FROM forumi0721/alpine-base:latest
+ARG BASE_IMAGE=forumi0721/alpine-base
+
+FROM ${BASE_IMAGE}:latest
 
 LABEL maintainer="forumi0721@gmail.com"
 

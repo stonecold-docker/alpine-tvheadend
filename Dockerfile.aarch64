@@ -14,7 +14,9 @@ RUN ["docker-build-end"]
 
 
 
-FROM forumi0721/alpine-base:aarch64
+ARG BASE_IMAGE=forumi0721/alpine-base
+
+FROM ${BASE_IMAGE}:aarch64
 
 LABEL maintainer="forumi0721@gmail.com"
 
