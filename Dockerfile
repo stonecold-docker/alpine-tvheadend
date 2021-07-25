@@ -1,6 +1,6 @@
-ARG BUILD_ARCH=x64
+ARG BUILD_TAG=latest
 
-FROM forumi0721/alpine-buildbase:latest as builder
+FROM --platform=linux/amd64 forumi0721/alpine-buildbase:latest as builder
 
 LABEL maintainer="forumi0721@gmail.com"
 
@@ -14,9 +14,7 @@ RUN ["docker-build"]
 
 
 
-ARG BASE_IMAGE=forumi0721/alpine-base
-
-FROM ${BASE_IMAGE}:latest
+FROM --platform=linux/amd64 forumi0721/alpine-base:${BUILD_TAG}
 
 LABEL maintainer="forumi0721@gmail.com"
 
