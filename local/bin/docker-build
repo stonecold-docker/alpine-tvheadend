@@ -43,6 +43,10 @@ mkdir -p /output
 make DESTDIR=/output install
 cd /
 rm -rf /build
+
+cd /output/usr/share/tvheadend/src/webui/static
+wget -O - -q https://github.com/dave-p/TVHadmin-JS/archive/master.tar.gz | tar zxf -
+mv TVHadmin-JS-master TVHadmin-JS
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
 echo
 
