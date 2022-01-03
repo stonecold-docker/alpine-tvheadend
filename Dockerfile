@@ -4,7 +4,7 @@ FROM forumi0721/alpine-buildbase:latest as builder
 
 LABEL maintainer="forumi0721@gmail.com"
 
-COPY local/. /usr/local/
+COPY local/bin/docker-build /usr/local/bin/
 
 #RUN ["docker-build-start"]
 

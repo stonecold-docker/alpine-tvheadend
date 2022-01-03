@@ -37,7 +37,8 @@ cd tvheadend
 	--disable-libfdkaac_static \
 	--disable-libmfx_static \
 	--python=python3 \
-	--nowerror
+	--nowerror \
+	--disable-execinfo
 make -j 4
 mkdir -p /output
 make DESTDIR=/output install
