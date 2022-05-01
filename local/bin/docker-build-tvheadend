@@ -4,7 +4,7 @@ set -e
 
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Installing required packages"
 PKG_LIB=""
-PKG_DEV="findutils bash git python3 linux-headers bsd-compat-headers coreutils openssl-dev ffmpeg-dev gettext-dev zlib-dev cmake uriparser-dev"
+PKG_DEV="findutils bash git python3 py3-requests linux-headers bsd-compat-headers coreutils openssl-dev ffmpeg4-dev gettext-dev zlib-dev cmake uriparser-dev"
 PKG_DEV="${PKG_DEV} gnu-libiconv-dev libdvbcsa-dev x264-dev x265-dev libvpx-dev opus-dev"
 docker-install -r -u ${PKG_LIB} ${PKG_DEV}
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
@@ -21,6 +21,8 @@ export PYTHONHTTPSVERIFY=0
 mkdir -p /build
 cd /build
 git clone https://github.com/tvheadend/tvheadend.git
+ln -s /usr/bin/python3 /usr/local/bin/python
+sed -i -e 's/verify=PCLOUD_CA_CERTS/verify=False/g' /build/tvheadend/support/pcloud.py
 cd tvheadend
 ./configure --prefix=/usr \
 	--sysconfdir=/etc \
