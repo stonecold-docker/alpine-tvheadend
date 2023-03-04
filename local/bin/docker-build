@@ -4,7 +4,7 @@ set -e
 
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Installing required packages"
 PKG_LIB="goreman su-exec"
-PKG_LIB="${PKG_LIB} openssl gnu-libiconv ffmpeg ffmpeg4-libs liburiparser libdvbcsa"
+PKG_LIB="${PKG_LIB} openssl gnu-libiconv ffmpeg ffmpeg4 ffmpeg4-libavcodec ffmpeg4-libavfilter ffmpeg4-libavformat ffmpeg4-libavutil liburiparser libdvbcsa"
 PKG_LIB="${PKG_LIB} socat"
 #if [ "$(uname -m)" = "x86_64" ]; then
 #	PKG_LIB="${PKG_LIB} gnu-libiconv ffmpeg ffmpeg4-libs liburiparser libdvbcsa"
