@@ -42,8 +42,7 @@ docker run -d \
 #### Usage
 
 * URL : [http://localhost:9981/](http://localhost:9981/)
-    - Default username/password : forumi0721/passwd
-    - If you want to convert mp4, you need to add post-processing  */usr/local/bin/convertvideo %f*
+    - Default username/password : null/null
 
 
 
