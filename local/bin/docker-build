@@ -4,15 +4,11 @@ set -e
 
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> Installing required packages"
 PKG_LIB="goreman su-exec"
-#PKG_LIB="${PKG_LIB} openssl gnu-libiconv ffmpeg ffmpeg4 ffmpeg4-libavcodec ffmpeg4-libavfilter ffmpeg4-libavformat ffmpeg4-libavutil liburiparser libdvbcsa"
-PKG_LIB="${PKG_LIB} openssl gnu-libiconv ffmpeg liburiparser libdvbcsa"
+PKG_LIB="${PKG_LIB} avahi bash coreutils dbus ffmpeg findutils gettext git gnu-libiconv libdvbcsa libhdhomerun libva libvpx openssl>3 opus pngquant python3 uriparser x264 x265 zlib"
 PKG_LIB="${PKG_LIB} socat"
-#if [ "$(uname -m)" = "x86_64" ]; then
-#	PKG_LIB="${PKG_LIB} gnu-libiconv ffmpeg ffmpeg4-libs liburiparser libdvbcsa"
-#	PKG_LIB="${PKG_LIB} socat"
-#else
-#	PKG_LIB="${PKG_LIB} tvheadend ffmpeg ffmpeg4-libs socat"
-#fi
+if [ "$(uname -m)" = "x86_64" ]; then
+	PKG_LIB="${PKG_LIB} libva-intel-driver"
+fi
 PKG_DEV=""
 docker-install -r -u ${PKG_LIB} ${PKG_DEV}
 echo "[$(TZ="GMT-9" date '+%Y-%m-%d %H:%M:%S')] ==> OK"
