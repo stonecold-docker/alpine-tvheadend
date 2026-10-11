@@ -5,10 +5,10 @@
 
 
 ----------------------------------------
-### x64
-![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-tvheadend/x64)
-### aarch64
-![Docker Image Size](https://img.shields.io/docker/image-size/forumi0721/alpine-tvheadend/aarch64)
+### amd64
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721/alpine-tvheadend/latest?arch=amd64)
+### arm64
+![Docker Image Size (tag)](https://img.shields.io/docker/image-size/forumi0721/alpine-tvheadend/latest?arch=arm64)
 
 
 
@@ -16,8 +16,8 @@
 #### Description
 
 * Distribution : [Alpine Linux](https://alpinelinux.org/)
-* Architecture : x64,aarch64
-* Appplication : [Tvheadend](https://tvheadend.org/)
+* Architecture : amd64, arm64
+* Application : [Tvheadend](https://tvheadend.org/)
     - Tvheadend is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT\>IP and HDHomeRun as input sources. Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT\>IP streaming.
 
 
@@ -33,7 +33,7 @@ docker run -d \
            -p 9982:9982/tcp \
            -p 9983:9983/tcp \
            -v /conf.d:/conf.d \
-           forumi0721/alpine-tvheadend:[ARCH_TAG]
+           forumi0721/alpine-tvheadend:latest
 ```
 
 
